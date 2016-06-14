@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62588E821D10A1160055A5EB /* OpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62588E811D10A1160055A5EB /* OpsViewController.swift */; };
+		62588E841D10A23A0055A5EB /* OpsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */; };
+		62588E861D10A2690055A5EB /* OpsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62588E851D10A2690055A5EB /* OpsTableViewCell.swift */; };
 		62C188441D0F16DD009C30D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C188431D0F16DD009C30D2 /* AppDelegate.swift */; };
 		62C188461D0F16DD009C30D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C188451D0F16DD009C30D2 /* ViewController.swift */; };
 		62C188491D0F16DD009C30D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C188471D0F16DD009C30D2 /* Main.storyboard */; };
 		62C1884B1D0F16DD009C30D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C1884A1D0F16DD009C30D2 /* Assets.xcassets */; };
 		62C1884E1D0F16DD009C30D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C1884C1D0F16DD009C30D2 /* LaunchScreen.storyboard */; };
+		62C188561D0F487F009C30D2 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C188551D0F487F009C30D2 /* Operations.swift */; };
+		62C1885F1D0F4D8E009C30D2 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C1885E1D0F4D8E009C30D2 /* LoginManager.swift */; };
+		70B4A84BA08EA2BF71241F46 /* Pods_SeamlessOp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30708CD5811DF89A24FE380C /* Pods_SeamlessOp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30708CD5811DF89A24FE380C /* Pods_SeamlessOp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeamlessOp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		458244BA48BB14D33FF14F0F /* Pods-SeamlessOp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeamlessOp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeamlessOp/Pods-SeamlessOp.debug.xcconfig"; sourceTree = "<group>"; };
+		559F9FD3169341A3250517E4 /* Pods-SeamlessOp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeamlessOp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeamlessOp/Pods-SeamlessOp.release.xcconfig"; sourceTree = "<group>"; };
+		62588E811D10A1160055A5EB /* OpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpsViewController.swift; sourceTree = "<group>"; };
+		62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpsDetailViewController.swift; sourceTree = "<group>"; };
+		62588E851D10A2690055A5EB /* OpsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpsTableViewCell.swift; sourceTree = "<group>"; };
 		62C188401D0F16DD009C30D2 /* SeamlessOp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeamlessOp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C188431D0F16DD009C30D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C188451D0F16DD009C30D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +34,9 @@
 		62C1884A1D0F16DD009C30D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62C1884D1D0F16DD009C30D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62C1884F1D0F16DD009C30D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C188551D0F487F009C30D2 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
+		62C1885E1D0F4D8E009C30D2 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		62C188601D0F52DF009C30D2 /* SeamlessOp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeamlessOp-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70B4A84BA08EA2BF71241F46 /* Pods_SeamlessOp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +56,9 @@
 			children = (
 				62C188421D0F16DD009C30D2 /* SeamlessOp */,
 				62C188411D0F16DD009C30D2 /* Products */,
+				A7C99E5B89CD038CBC4F7FAE /* Pods */,
+				888B23267DB892FDFF4D5D15 /* Frameworks */,
+				62C188601D0F52DF009C30D2 /* SeamlessOp-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +75,42 @@
 			children = (
 				62C188431D0F16DD009C30D2 /* AppDelegate.swift */,
 				62C188451D0F16DD009C30D2 /* ViewController.swift */,
+				62588E811D10A1160055A5EB /* OpsViewController.swift */,
+				62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */,
+				62588E851D10A2690055A5EB /* OpsTableViewCell.swift */,
 				62C188471D0F16DD009C30D2 /* Main.storyboard */,
 				62C1884A1D0F16DD009C30D2 /* Assets.xcassets */,
 				62C1884C1D0F16DD009C30D2 /* LaunchScreen.storyboard */,
 				62C1884F1D0F16DD009C30D2 /* Info.plist */,
+				62C188571D0F488A009C30D2 /* Model */,
 			);
 			path = SeamlessOp;
+			sourceTree = "<group>";
+		};
+		62C188571D0F488A009C30D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62C188551D0F487F009C30D2 /* Operations.swift */,
+				62C1885E1D0F4D8E009C30D2 /* LoginManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		888B23267DB892FDFF4D5D15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30708CD5811DF89A24FE380C /* Pods_SeamlessOp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7C99E5B89CD038CBC4F7FAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				458244BA48BB14D33FF14F0F /* Pods-SeamlessOp.debug.xcconfig */,
+				559F9FD3169341A3250517E4 /* Pods-SeamlessOp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62C188521D0F16DD009C30D2 /* Build configuration list for PBXNativeTarget "SeamlessOp" */;
 			buildPhases = (
+				C7DE9037C16B80BF7E36A3E1 /* 📦 Check Pods Manifest.lock */,
 				62C1883C1D0F16DD009C30D2 /* Sources */,
 				62C1883D1D0F16DD009C30D2 /* Frameworks */,
 				62C1883E1D0F16DD009C30D2 /* Resources */,
+				49B7EB1E9F9C3DA2AF2AD5BC /* 📦 Embed Pods Frameworks */,
+				CD6E5A5A1195FD3C6FB5DC76 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +149,11 @@
 					62C1883F1D0F16DD009C30D2 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = MHL7GC47Y6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -131,13 +188,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		49B7EB1E9F9C3DA2AF2AD5BC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeamlessOp/Pods-SeamlessOp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7DE9037C16B80BF7E36A3E1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD6E5A5A1195FD3C6FB5DC76 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeamlessOp/Pods-SeamlessOp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		62C1883C1D0F16DD009C30D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C188561D0F487F009C30D2 /* Operations.swift in Sources */,
+				62588E861D10A2690055A5EB /* OpsTableViewCell.swift in Sources */,
+				62C1885F1D0F4D8E009C30D2 /* LoginManager.swift in Sources */,
+				62588E841D10A23A0055A5EB /* OpsDetailViewController.swift in Sources */,
 				62C188461D0F16DD009C30D2 /* ViewController.swift in Sources */,
 				62C188441D0F16DD009C30D2 /* AppDelegate.swift in Sources */,
+				62588E821D10A1160055A5EB /* OpsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,23 +360,30 @@
 		};
 		62C188531D0F16DD009C30D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 458244BA48BB14D33FF14F0F /* Pods-SeamlessOp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SeamlessOp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Childers.SeamlessOp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeamlessOp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		62C188541D0F16DD009C30D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 559F9FD3169341A3250517E4 /* Pods-SeamlessOp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SeamlessOp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Childers.SeamlessOp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeamlessOp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -289,6 +406,7 @@
 				62C188541D0F16DD009C30D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
