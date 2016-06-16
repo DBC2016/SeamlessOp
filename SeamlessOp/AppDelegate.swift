@@ -36,3 +36,118 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
 
 }
 
+
+    extension AppDelegate {
+    
+    
+    func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
+        if beacons.count > 0 {
+            let nearestBeacon = beacons[0]
+            if region != lastRegion {
+                switch nearestBeacon.proximity {
+                case .Immediate:
+                    print("Ranged Immediate \(region.identifier) beacon")
+                    NSNotificationCenter.defaultCenter().postNotificationName("inRange", object: nil, userInfo: ["region":region.identifier])
+//                                        case .Near:
+//                                            print("Ranged Near \(region.identifier) beacon")
+                                        case .Far:
+                                            print("Ranged Far \(region.identifier) beacon")
+//                                        case .Unknown:
+//                                        print("Ranged Unknown \(region.identifier) beacon")
+                default:
+                    return
+                                            print("don't care")
+                }
+                lastRegion = region
+                
+                
+                
+            }
+            
+        }
+    }
+    
+    func beaconManager(manager: AnyObject, didDetermineState state: CLRegionState, forRegion region: CLBeaconRegion) {
+        switch state {
+        case .Unknown:
+            print("Region \(region.identifier) Unknown")
+        case .Inside:
+            print("Region \(region.identifier) Inside")
+        case .Outside:
+            print("Region \(region.identifier) Outside")
+        }
+        
+        
+    }
+    
+    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
+        print("Did Enter \(region.identifier)")
+    }
+    
+    func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
+        print("Did Exit \(region.identifier)")
+        
+}
+        
+        func setUpBeacons() {
+            print("Settings Up Beacons")
+            let uuidString = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+            let beaconUUID = NSUUID(UUIDString: uuidString)!
+            
+            let beaconIdentifier = "IronYard"
+            let allBeaconsRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
+            beaconManager.startMonitoringForRegion(allBeaconsRegion)
+            
+            let firstBeaconMajor :CLBeaconMajorValue = 39380
+            let firstBeaconMinor :CLBeaconMinorValue = 44024
+            let firstBeaconIdentifier = "firstBeacon"
+            let firstBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: firstBeaconMajor, minor: firstBeaconMinor, identifier: firstBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(firstBeaconRegion)
+            
+            let secondBeaconMajor :CLBeaconMajorValue = 31640
+            let secondBeaconMinor :CLBeaconMinorValue = 65404
+            let secondBeaconIdentifier = "secondBeacon"
+            let secondBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: secondBeaconMajor, minor: secondBeaconMinor, identifier: secondBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(secondBeaconRegion)
+            
+            let thirdBeaconMajor :CLBeaconMajorValue = 34909
+            let thirdBeaconMinor :CLBeaconMinorValue = 15660
+            let thirdBeaconIdentifier = "thirdBeacon"
+            let thirdBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: thirdBeaconMajor, minor: thirdBeaconMinor, identifier: thirdBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(thirdBeaconRegion)
+            
+        }
+
+
+
+    func checkForLocationAuthorization() {
+        if CLLocationManager.locationServicesEnabled(){
+            print("Loc Services On!")
+            switch ESTBeaconManager.authorizationStatus() {
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                print("Start Up")
+               // setUpBeacons()
+            case .Denied, .Restricted:
+                print("Hey User, turn us on in Settings")
+            case .NotDetermined:
+                print("Not Determined")
+                if beaconManager.respondsToSelector(#selector(CLLocationManager.requestAlwaysAuthorization)){
+                    print("Requesting Always")
+                    beaconManager.requestAlwaysAuthorization()
+                }
+            }
+        } else {
+            print("Turn on Location Services!")
+        }
+        
+    }
+    
+    func beaconManager(manager: AnyObject, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("Did Change Authorization")
+        checkForLocationAuthorization()
+    }
+    
+    
+}
+
+

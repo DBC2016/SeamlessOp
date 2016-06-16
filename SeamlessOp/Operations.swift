@@ -6,19 +6,23 @@
 //  Copyright © 2016 Demond Childers. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 class Operations: NSObject {
     
     
-    var opName              :String = ""
+    var opSiteName          :String = ""
+    var opZone              :String = ""
     var opDescrip           :String = ""
-    var opUrgency           :Bool = false
-    var opNotesPrev         :String = ""
-    var opNotesPast         :String = ""
+    var opUrgency           :Int = 0
+    var opNotesPreview      :String = ""
+//    var opNotesPast         :String = ""
     var opDueDate           :NSDate!
     var opCompleteDate      :NSDate!
+    var opAuditor           :Bool = false
     var opBeaconID          :String = ""
+    var ownerID             :String = ""
+    
     
 
     

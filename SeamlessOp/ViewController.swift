@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var emailEntry             :UITextField!
     @IBOutlet private weak var passwordEntry          :UITextField!
     @IBOutlet private weak var userRegister           :UIButton!
-    @IBOutlet private weak var userLogin              :UIButton!
+    @IBOutlet private weak var userLogIn              :UIButton!
+//    @IBOutlet private weak var userLogout             :UIButton!
     
     
     
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     
     
     //MARK: - User Login Methods
+    
     
     
     @IBAction func loginButtonPressed(button: UIButton) {
@@ -78,29 +80,51 @@ class ViewController: UIViewController {
     
     func loginRecv() {
         performSegueWithIdentifier("loginSegue", sender: self)
+        
+    }
     
-    
+    @IBAction private func registerNewUser(button: UIButton){
+        guard let email = emailEntry.text else {
+            return
+        }
+        guard let password = passwordEntry.text else {
+            return
+            
+        }
+        let user = BackendlessUser()
+        user.email = email
+        user.password = password
+        backendless.userService.registering(user, response: { (registeredUser) in
+            print("Success Registering \(registeredUser.email)")
+        }) { (error) in
+            print("Error Registering \(error)")
+            
+        }
+        
+    }
+
+   
     
     
     
     
     //MARK: - Life Cycle Methods
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldChanged()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loginRecv), name: "LoggedInMsg", object: nil)
         
         
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
-
+    
+    
 }
 

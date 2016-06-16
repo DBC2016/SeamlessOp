@@ -6,7 +6,7 @@
 //  Copyright © 2016 Demond Childers. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 class LoginManager: NSObject {
     
