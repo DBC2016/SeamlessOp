@@ -11,17 +11,17 @@ import Foundation
 class Operations: NSObject {
     
     
-    var opSiteName          :String = ""
-    var opZone              :String = ""
-    var opDescrip           :String = ""
+    var opSiteName          :String!
+    var opZone              :String!
+    var opDescrip           :String!
     var opUrgency           :Int = 0
-    var opNotesPreview      :String = ""
-//    var opNotesPast         :String = ""
+    var opNotesPreview      :String?
+    var opNotesPast         :String?
     var opDueDate           :NSDate!
-    var opCompleteDate      :NSDate!
+    var opCompleteDate      :NSDate?
     var opAuditor           :Bool = false
-    var opBeaconID          :String = ""
-    var ownerID             :String = ""
+    var opBeaconID          :String!
+    var ownerId             :String!
     
     
 

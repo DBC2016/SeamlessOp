@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     let backendless = Backendless.sharedInstance()
     let loginManager = LoginManager.sharedInstance
+    
     var currentUser = BackendlessUser()
     
     
@@ -30,6 +31,9 @@ class ViewController: UIViewController {
     
     
     
+    
+    
+
     
     
     
@@ -79,31 +83,16 @@ class ViewController: UIViewController {
     }
     
     func loginRecv() {
-        performSegueWithIdentifier("loginSegue", sender: self)
+        performSegueWithIdentifier("logToListSegue", sender: self)
         
     }
     
-    @IBAction private func registerNewUser(button: UIButton){
-        guard let email = emailEntry.text else {
-            return
-        }
-        guard let password = passwordEntry.text else {
-            return
-            
-        }
-        let user = BackendlessUser()
-        user.email = email
-        user.password = password
-        backendless.userService.registering(user, response: { (registeredUser) in
-            print("Success Registering \(registeredUser.email)")
-        }) { (error) in
-            print("Error Registering \(error)")
-            
-        }
-        
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destController = segue.destinationViewController as! OpsViewController
+        destController.currentUser = currentUser
     }
 
-   
     
     
     

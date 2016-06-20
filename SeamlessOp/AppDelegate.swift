@@ -101,20 +101,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
             let firstBeaconMajor :CLBeaconMajorValue = 39380
             let firstBeaconMinor :CLBeaconMinorValue = 44024
             let firstBeaconIdentifier = "firstBeacon"
-            let firstBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: firstBeaconMajor, minor: firstBeaconMinor, identifier: firstBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(firstBeaconRegion)
+            let purpleBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: firstBeaconMajor, minor: firstBeaconMinor, identifier: firstBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(purpleBeaconRegion)
             
             let secondBeaconMajor :CLBeaconMajorValue = 31640
             let secondBeaconMinor :CLBeaconMinorValue = 65404
             let secondBeaconIdentifier = "secondBeacon"
-            let secondBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: secondBeaconMajor, minor: secondBeaconMinor, identifier: secondBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(secondBeaconRegion)
+            let blueBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: secondBeaconMajor, minor: secondBeaconMinor, identifier: secondBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(blueBeaconRegion)
             
             let thirdBeaconMajor :CLBeaconMajorValue = 34909
             let thirdBeaconMinor :CLBeaconMinorValue = 15660
             let thirdBeaconIdentifier = "thirdBeacon"
-            let thirdBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: thirdBeaconMajor, minor: thirdBeaconMinor, identifier: thirdBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(thirdBeaconRegion)
+            let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: thirdBeaconMajor, minor: thirdBeaconMinor, identifier: thirdBeaconIdentifier)
+            beaconManager.startRangingBeaconsInRegion(greenBeaconRegion)
             
         }
 
@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
             switch ESTBeaconManager.authorizationStatus() {
             case .AuthorizedAlways, .AuthorizedWhenInUse:
                 print("Start Up")
-               // setUpBeacons()
+                setUpBeacons()
             case .Denied, .Restricted:
                 print("Hey User, turn us on in Settings")
             case .NotDetermined:

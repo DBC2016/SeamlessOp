@@ -51,8 +51,8 @@ class LoginManager: NSObject {
         }
         
     }
-
     
+
     
 
 }
