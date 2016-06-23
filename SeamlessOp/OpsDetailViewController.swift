@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
     
@@ -20,6 +20,7 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var newOperation  :Operations?
     var sitesArray = [Sites]()
     var areaArray = [Sites]()
+
     
     @IBOutlet private weak var sitesPicker              :UIPickerView!
     @IBOutlet private weak var areaPicker               :UIPickerView!
@@ -28,7 +29,10 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet private weak var urgencySegControl        :UISegmentedControl!
     @IBOutlet private weak var completeDatePicker       :UIDatePicker!
     @IBOutlet private weak var siteImageView            :UIImageView!
-    @IBOutlet private weak var detailsScrollView        :UIScrollView!
+//    @IBOutlet private weak var detailsScrollView        :UIScrollView!
+    
+
+    
     
     
     
@@ -171,50 +175,50 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     
-    //MARK: - BUILT-IN CAMERA METHODS
+    //MARK: - CAMERA METHODS
     
     //Code to pull photos from Gallery
     
-//    @IBAction private func galleryButtonTapped(button: UIBarButtonItem) {
-//        print("gallery")
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .SavedPhotosAlbum
-//        presentViewController(imagePicker, animated: true, completion: nil)
-//        
-//    }
-//    
-//    
-//    
-//    @IBAction private func cameraButtonTapped(button: UIBarButtonItem) {
-//        print("Camera")
-//        //Code to bring up Camera App
-//        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.sourceType = .Camera
-////            imagePicker.delegate = self.
-//            presentViewController(imagePicker, animated: true, completion: nil)
-//        } else {
-//            print("No Camera")
-//            
-//        }
-//        
-//    }
+    @IBAction private func galleryButtonTapped(button: UIButton) {
+        print("gallery")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .SavedPhotosAlbum
+        presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    @IBAction private func cameraButtonTapped(button: UIBarButtonItem) {
+        print("Camera")
+        //Code to bring up Camera App
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .Camera
+            imagePicker.delegate = self
+            presentViewController(imagePicker, animated: true, completion: nil)
+        } else {
+            print("No Camera")
+            
+        }
+        
+    }
     
     
     // Better Understand difference between these functions and their use
     
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        vinoImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    
-//    
-//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//        
-//    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        siteImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
 
     
 

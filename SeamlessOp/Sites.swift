@@ -10,9 +10,12 @@ import UIKit
 
 class Sites: NSObject {
     
+//    let siteImageArray = ["pepsiBeacon, ironyardBeacon, amazonBeacon, fordBeacon, fedexBeacon"]
+
+    
     var siteName            :String!
     var areaName            :String!
-    var siteLogo            :String!
+//    var siteLogo            :String!
     var beaconIdentifier    :String!
 
 }

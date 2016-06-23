@@ -83,22 +83,22 @@ extension AppDelegate {
         let allBeaconsRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
         beaconManager.startMonitoringForRegion(allBeaconsRegion)
         
-        let fordBeaconMajor :CLBeaconMajorValue = 39380
-        let fordBeaconMinor :CLBeaconMinorValue = 44024
-        let fordBeaconIdentifier = "purpleBeacon"
-        let purpleBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: fordBeaconMajor, minor: fordBeaconMinor, identifier: fordBeaconIdentifier)
+        let beacon1Major :CLBeaconMajorValue = 39380
+        let beacon1Minor :CLBeaconMinorValue = 44024
+        let beacon1Identifier = "purpleBeacon"
+        let purpleBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon1Major, minor: beacon1Minor, identifier: beacon1Identifier)
         beaconManager.startRangingBeaconsInRegion(purpleBeaconRegion)
         
-        let pepsiBeaconMajor :CLBeaconMajorValue = 31640
-        let pepsiBeaconMinor :CLBeaconMinorValue = 65404
-        let pepsiBeaconIdentifier = "blueBeacon"
-        let blueBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: pepsiBeaconMajor, minor: pepsiBeaconMinor, identifier: pepsiBeaconIdentifier)
+        let beacon2Major :CLBeaconMajorValue = 31640
+        let beacon2Minor :CLBeaconMinorValue = 65404
+        let beacon2Identifier = "blueBeacon"
+        let blueBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon2Major, minor: beacon2Minor, identifier: beacon2Identifier)
         beaconManager.startRangingBeaconsInRegion(blueBeaconRegion)
         
-        let ironyardBeaconMajor :CLBeaconMajorValue = 34909
-        let ironyardBeaconMinor :CLBeaconMinorValue = 15660
-        let ironyardBeaconIdentifier = "greenBeacon"
-        let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: ironyardBeaconMajor, minor: ironyardBeaconMinor, identifier: ironyardBeaconIdentifier)
+        let beacon3Major :CLBeaconMajorValue = 34909
+        let beacon3Minor :CLBeaconMinorValue = 15660
+        let beacon3Identifier = "greenBeacon"
+        let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon3Major, minor: beacon3Minor, identifier: beacon3Identifier)
         beaconManager.startRangingBeaconsInRegion(greenBeaconRegion)
         
     }

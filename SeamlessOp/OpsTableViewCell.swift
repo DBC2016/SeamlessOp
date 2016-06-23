@@ -13,10 +13,10 @@ class OpsTableViewCell: UITableViewCell {
     
     
     
-    @IBOutlet weak var opsAreaTitleLabel        :UILabel!
-    @IBOutlet weak var opsDescripLabel          :UILabel!
-    @IBOutlet weak var opsTodaysDateLabel       :UILabel!
-    @IBOutlet weak var opsImageView             :UIImageView!
+    @IBOutlet weak var opsSiteLabel                 :UILabel!
+    @IBOutlet weak var opsAreaLabel                 :UILabel!
+    @IBOutlet weak var opsTodaysDateLabel           :UILabel!
+    @IBOutlet weak var opsLogoImageView             :UIImageView!
 
     
 

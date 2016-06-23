@@ -24,6 +24,7 @@ class Operations: NSObject {
     var opAuditor           :Bool = false
     var opBeaconID          :String!
     var ownerId             :String!
+    var opsLogo             :String!
     
     
 

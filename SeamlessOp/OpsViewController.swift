@@ -11,22 +11,23 @@ import UIKit
 class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    
-//    @IBOutlet weak var opsAreaTitleLabel        :UILabel!
-//    @IBOutlet weak var opsDescripLabel          :UILabel!
-//    @IBOutlet weak var opsTodaysDateLabel       :UILabel!
-//    @IBOutlet weak var opsImageView             :UIImageView!
+    //    @IBOutlet weak var opsSiteLabel             :UILabel!
+    //    @IBOutlet weak var opsAreaLabel             :UILabel!
+    //    @IBOutlet weak var opsTodaysDateLabel       :UILabel!
     
     
     let backendless = Backendless.sharedInstance()
     var currentUser = BackendlessUser()
     var opsArray = [Operations]()
-    var sitesArray = [Sites]()
-    var selectedSites   :Sites?
+    //    var sitesArray = [Sites]()
+    //    var selectedSites   :Sites?
+    //   let siteImageArray = ["pepsiBeacon, ironyardBeacon, amazonBeacon, fordBeacon, fedexBeacon"]
     
-
     
-
+    
+    
+    
+    
     @IBOutlet private weak var opsTableView     :UITableView!
     
     
@@ -67,21 +68,21 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!
         OpsTableViewCell
         let newOperation = opsArray[indexPath.row]
-        cell.opsAreaTitleLabel.text = newOperation.opSiteName
-        cell.opsDescripLabel.text = newOperation.opZone
+        cell.opsSiteLabel.text = newOperation.opSiteName
+        cell.opsAreaLabel.text = newOperation.opZone
         cell.opsTodaysDateLabel.text = "\(newOperation.opDueDate)"
-//        let selectedSite = sitesArray[indexPath.row]
-//        let image : UIImage! = UIImage(named: "\(selectedSite.siteLogo)")!
-//        opsImageView.image = image
+        print("logo \(newOperation.opsLogo)")
+        if let logo = newOperation.opsLogo {
+            let image = UIImage(named: logo)!
+            cell.opsLogoImageView?.image = image
+        } else {
+            cell.opsLogoImageView.image = nil
+        }
         
-        
-//        let image : UIImageView = UIImageView(named: "\(newOperation.opsImageView)")!
-//        opsSiteImageView.image = image
-    
-
         
         return cell
     }
+    
     
     
     
@@ -114,8 +115,8 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func findOperations() {
         let dataQuery = BackendlessDataQuery()
-        //                let whereClause = "siteBeacon = '\(selectedBeacon)'"
-        //                dataQuery.whereClause = whereClause
+//        let whereClause = "siteBeacon = '\(selectedBeacon)'"
+//        dataQuery.whereClause = whereClause
         
         var error: Fault?
         let bc = backendless.data.of(Operations.ofClass()).find(dataQuery, fault: &error)
@@ -147,77 +148,77 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         print("Temp Records Added")
         
         
-                let newOperation = Operations()
-        //        newOperation.opSiteName = "Ford Motors"
-        //        newOperation.opZone = "Zone 6"
-        //        newOperation.opDescrip = "Site owner is disappointed with our cleaning of restrooms, pay special attention to the first and 2nd floors and make sure all glass is cleaned."
-                  newOperation.opImage = "fordLogo"
-        //        newOperation.opUrgency = 1
-        //        newOperation.opNotesPreview = "Power wash assembly lines zone A and B"
-        //        newOperation.opDueDate = NSDate()
-        //        newOperation.opAuditor = false
-        //        newOperation.opBeaconID = "fordBeacon"
-        
-                saveOps(newOperation)
-        
-        
-        
-                let newOperation2 = Operations()
-        //        newOperation2.opSiteName = "Fed Ex"
-        //        newOperation2.opZone = "Zone 5"
-        //        newOperation2.opDescrip = "Empty all trash and recycling. Clean all lines and oil spills. audit assembly lines A thru F."
-                  newOperation2.opImage = "fedexLogo"
-        //        newOperation2.opUrgency = 3
-        //        newOperation2.opNotesPreview = "Site owner is very pleased. He would like us to make sure we pay special attention to oil spills and trash on perimeter"
-        //        newOperation2.opDueDate = NSDate()
-        //        newOperation2.opAuditor = false
-        
-                saveOps(newOperation2)
+//        let newOperation = Operations()
+//                newOperation.opSiteName = "Ford Motors"
+//                newOperation.opZone = "Zone 6"
+//                newOperation.opDescrip = "Site owner is disappointed with our cleaning of restrooms, pay special attention to the first and 2nd floors and make sure all glass is cleaned."
+//        newOperation.opLogo = "fordLogo"
+//                newOperation.opUrgency = 1
+//                newOperation.opNotesPreview = "Power wash assembly lines zone A and B"
+//                newOperation.opDueDate = NSDate()
+//                newOperation.opAuditor = false
+//                newOperation.opBeaconID = "fordBeacon"
+//        
+//        saveOps(newOperation)
         
         
         
-                let newOperation3 = Operations()
-        //        newOperation3.opSiteName = "Pepsi"
-        //        newOperation3.opZone = "Area 9"
-        //        newOperation3.opDescrip = "Paint all doors. Wax floors. Be sure to double check supplies in inventory"
-                  newOperation3.opImage = "pepsiLogo"
-        //        newOperation3.opUrgency = 1
-        //        newOperation3.opNotesPreview = "Site needs major work. Paint on all doors are chipping so let schedudle a project date with facilities manager."
-        //        newOperation3.opDueDate = NSDate()
-        //        newOperation3.opAuditor = false
-        //        newOperation3.opBeaconID = "pepsiBeacon"
+//        let newOperation2 = Operations()
+//                newOperation2.opSiteName = "FedEx"
+//                newOperation2.opZone = "Zone 5"
+//                newOperation2.opDescrip = "Empty all trash and recycling. Clean all lines and oil spills. audit assembly lines A thru F."
+//        newOperation2.opsLogo = "fedexLogo"
+//                newOperation2.opUrgency = 3
+//                newOperation2.opNotesPreview = "Site owner is very pleased. He would like us to make sure we pay special attention to oil spills and trash on perimeter"
+//                newOperation2.opDueDate = NSDate()
+//                newOperation2.opAuditor = false
+//        
+//        saveOps(newOperation2)
         
         
-                saveOps(newOperation3)
+        
+//        let newOperation3 = Operations()
+//                newOperation3.opSiteName = "Pepsi"
+//                newOperation3.opZone = "Area 9"
+//                newOperation3.opDescrip = "Paint all doors. Wax floors. Be sure to double check supplies in inventory"
+//        newOperation3.opLogo = "pepsiLogo"
+//                newOperation3.opUrgency = 1
+//                newOperation3.opNotesPreview = "Site needs major work. Paint on all doors are chipping so let schedudle a project date with facilities manager."
+//                newOperation3.opDueDate = NSDate()
+//                newOperation3.opAuditor = false
+//                newOperation3.opBeaconID = "pepsiBeacon"
+//        
+//        
+//        saveOps(newOperation3)
         
         
-                let newOperation4 = Operations()
-        //        newOperation4.opSiteName = "Amazon"
-        //        newOperation4.opZone = "Sec 8"
-        //        newOperation4.opDescrip = "Site looks good but we still have a long way to go. Since this is a new account, consult with facility mangaer to determine needs of client."
-                  newOperation4.opImage = "amazonLogo"
-        //        newOperation4.opUrgency = 1
-        //        newOperation4.opNotesPreview = "Wax all bathroom floors and determine other needs."
-        //        newOperation4.opDueDate = NSDate()
-        //        newOperation4.opAuditor = false
+//        let newOperation4 = Operations()
+//                newOperation4.opSiteName = "Amazon"
+//                newOperation4.opZone = "Sec 8"
+//                newOperation4.opDescrip = "Site looks good but we still have a long way to go. Since this is a new account, consult with facility mangaer to determine needs of client."
+//        newOperation4.opLogo = "amazonLogo"
+//                newOperation4.opUrgency = 1
+//                newOperation4.opNotesPreview = "Wax all bathroom floors and determine other needs."
+//                newOperation4.opDueDate = NSDate()
+//                newOperation4.opAuditor = false
+//        
+//        
+//        saveOps(newOperation4)
         
         
-                saveOps(newOperation4)
-        
-        
-                let newOperation5 = Operations()
-        //        newOperation5.opSiteName = "Iron Yard"
-        //        newOperation5.opZone = "First Floor"
-        //        newOperation5.opDescrip = "Empty trash cans, vacuum floors, complete dry wall in all classrooms."
-                  newOperation5.opImage = "ironyardLogo"
-        //        newOperation5.opUrgency = 4
-        //        newOperation5.opNotesPreview = "Review site for special projects."
-        //        newOperation5.opDueDate = NSDate()
-        //        newOperation5.opAuditor = false
-        //        newOperation5.opBeaconID = "ironyardBeacon"
-        
-        
-                saveOps(newOperation5)
+//        let newOperation5 = Operations()
+//                newOperation5.opSiteName = "Iron Yard"
+//                newOperation5.opZone = "First Floor"
+//                newOperation5.opDescrip = "Empty trash cans, vacuum floors, complete dry wall in all classrooms."
+//        newOperation5.opLogo = "ironyardLogo"
+//                newOperation5.opUrgency = 4
+//                newOperation5.opNotesPreview = "Review site for special projects."
+//                newOperation5.opDueDate = NSDate()
+//                newOperation5.opAuditor = false
+//                newOperation5.opBeaconID = "ironyardBeacon"
+//        
+//        
+//        saveOps(newOperation5)
         
         
     }
@@ -257,13 +258,13 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(beaconInRange), name: "inRange", object: nil)
-        //                findOperations()
+           findOperations()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //        tempAddRecords()
+//        tempAddRecords()
         findOperations()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print("LR1 \(appDelegate.lastRegion?.identifier)")
