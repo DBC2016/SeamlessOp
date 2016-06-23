@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
+class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     
@@ -18,17 +18,17 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
     let loginManager = LoginManager.sharedInstance
     var currentUser = BackendlessUser()
     var newOperation  :Operations?
+    var sitesArray = [Sites]()
+    var areaArray = [Sites]()
     
-    
-    
-    
-    @IBOutlet private weak var opSiteNameLabel          :UILabel!
-    @IBOutlet private weak var opZoneTextField          :UITextField!
+    @IBOutlet private weak var sitesPicker              :UIPickerView!
+    @IBOutlet private weak var areaPicker               :UIPickerView!
     @IBOutlet private weak var opAuditCompleteSwitch    :UISwitch!
     @IBOutlet private weak var specialNotesTextView     :UITextView!
     @IBOutlet private weak var urgencySegControl        :UISegmentedControl!
     @IBOutlet private weak var completeDatePicker       :UIDatePicker!
     @IBOutlet private weak var siteImageView            :UIImageView!
+    @IBOutlet private weak var detailsScrollView        :UIScrollView!
     
     
     
@@ -62,9 +62,10 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
             return
         }
         
-        operations.opSiteName = opSiteNameLabel.text!
+        operations.opSiteName = sitesArray[sitesPicker.selectedRowInComponent(0)].siteName
+        operations.opZone = areaArray[areaPicker.selectedRowInComponent(0)].areaName
+        operations.opBeaconID = areaArray[areaPicker.selectedRowInComponent(0)].beaconIdentifier
         operations.opUrgency = urgencySegControl.selectedSegmentIndex
-        operations.opZone = opZoneTextField.text!
         operations.opNotesPreview = specialNotesTextView.text!
         operations.opCompleteDate = completeDatePicker.date
         operations.opAuditor = opAuditCompleteSwitch.on
@@ -110,6 +111,66 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
         
     }
     
+    //MARK: - PICKERVIEW METHODS
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == sitesPicker {
+            return sitesArray.count
+        } else if pickerView == areaPicker {
+            return areaArray.count
+        }
+        return 0
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == sitesPicker {
+            return sitesArray[row].siteName
+        } else if pickerView == areaPicker {
+            return areaArray[row].areaName
+        }
+        return "?"
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == sitesPicker {
+            filterAreaArray()
+            areaPicker.reloadAllComponents()
+        }
+    }
+    
+    //MARK: - BACKENDLESS METHODS
+
+    func filterAreaArray() {
+        let index = sitesPicker.selectedRowInComponent(0)
+        areaArray = sitesArray.filter {$0.siteName == sitesArray[index].siteName}
+    }
+    
+    func findSites() {
+        let dataQuery = BackendlessDataQuery()
+        var error: Fault?
+        let bc = backendless.data.of(Sites.ofClass()).find(dataQuery, fault: &error)
+        if error == nil {
+            sitesArray = bc.getCurrentPage() as! [Sites]
+            sitesPicker.reloadAllComponents()
+            if let operations = newOperation {
+                let selectedSite = sitesArray.filter {$0.siteName == operations.opSiteName}
+                let siteIndex = sitesArray.indexOf(selectedSite[0])
+                sitesPicker.selectRow(siteIndex!, inComponent: 0, animated: true)
+                filterAreaArray()
+                let selectedArea = areaArray.filter {$0.areaName == operations.opZone}
+                let areaIndex = areaArray.indexOf(selectedArea[0])
+                areaPicker.selectRow(areaIndex!, inComponent: 0, animated: true)
+            }
+        } else {
+            print("Find Error \(error)")
+        }
+    }
+
+    
     //MARK: - BUILT-IN CAMERA METHODS
     
     //Code to pull photos from Gallery
@@ -131,7 +192,7 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
 //        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
 //            let imagePicker = UIImagePickerController()
 //            imagePicker.sourceType = .Camera
-//            imagePicker.delegate = self
+////            imagePicker.delegate = self.
 //            presentViewController(imagePicker, animated: true, completion: nil)
 //        } else {
 //            print("No Camera")
@@ -171,8 +232,20 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
         super.viewWillAppear(animated)
         
         if let operations = newOperation {
-            opSiteNameLabel.text = operations.opSiteName
-            opZoneTextField.text = operations.opZone
+//            let selectedSite = sitesArray.filter {$0.siteName == operations.opSiteName}
+//            let siteIndex = sitesArray.indexOf(selectedSite[0])
+//            sitesPicker.selectRow(siteIndex!, inComponent: 0, animated: true)
+//            
+//            print("Area Array \(areaArray.count)")
+//            for area in areaArray {
+//                print("Area \(area.areaName)")
+//            }
+//            let selectedArea = areaArray.filter {$0.areaName == operations.opZone}
+//            print("SelSite \(selectedArea.first?.areaName)")
+//            let areaIndex = areaArray.indexOf(selectedArea[0])
+//            areaPicker.selectRow(areaIndex!, inComponent: 0, animated: true)
+            
+            findSites()
             specialNotesTextView.text = operations.opNotesPreview
             opAuditCompleteSwitch.on = operations.opAuditor
             urgencySegControl.selectedSegmentIndex = operations.opUrgency
@@ -180,8 +253,7 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate {
             
         } else {
             newOperation = Operations()
-            opSiteNameLabel.text = ""
-            opZoneTextField.text = ""
+            specialNotesTextView.text = ""
             opAuditCompleteSwitch.on = false
             urgencySegControl.selectedSegmentIndex = 0
             completeDatePicker.date = NSDate()

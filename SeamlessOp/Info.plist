@@ -47,5 +47,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationUsageDescription</key>
+	<string>We need to use your location to make it easier to sign off on work completed</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to use your location to make it easier to sign off on work completed</string>
 </dict>
 </plist>

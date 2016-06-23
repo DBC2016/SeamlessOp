@@ -15,6 +15,7 @@ class LoginManager: NSObject {
     var currentUser = BackendlessUser()
     
     func isValidLogin(email: String, password: String) -> Bool {
+        print("IVL")
         return email.characters.count > 5 && password.characters.count > 4
     }
     

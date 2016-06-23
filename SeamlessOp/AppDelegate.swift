@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import CoreLocation 
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
-    
     
     let APP_ID = "BA5D325E-8722-CF7A-FFC2-BD1F26153F00"
     let SECRET_KEY = "77FC2E9D-EE55-65EB-FF75-F06CA2FFDD00"
@@ -20,10 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     var backendless = Backendless.sharedInstance()
     let beaconManager = ESTBeaconManager()
     var lastRegion: CLBeaconRegion?
-
+    
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.beaconManager.delegate = self
         backendless.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
@@ -31,14 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         
         return true
     }
-
-
-
+    
 }
 
-
-    extension AppDelegate {
-    
+extension AppDelegate {
     
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         if beacons.count > 0 {
@@ -48,22 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
                 case .Immediate:
                     print("Ranged Immediate \(region.identifier) beacon")
                     NSNotificationCenter.defaultCenter().postNotificationName("inRange", object: nil, userInfo: ["region":region.identifier])
-//                                        case .Near:
-//                                            print("Ranged Near \(region.identifier) beacon")
-                                        case .Far:
-                                            print("Ranged Far \(region.identifier) beacon")
-//                                        case .Unknown:
-//                                        print("Ranged Unknown \(region.identifier) beacon")
+                    lastRegion = region
+                case .Near:
+//                    print("Ranged Near \(region.identifier) beacon")
+                    break
                 default:
-                    return
-                                            print("don't care")
+//                    print("don't care")
+                    break
                 }
-                lastRegion = region
-                
-                
-                
             }
-            
         }
     }
     
@@ -76,8 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         case .Outside:
             print("Region \(region.identifier) Outside")
         }
-        
-        
     }
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
@@ -87,39 +72,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
         print("Did Exit \(region.identifier)")
         
-}
+    }
+    
+    func setUpBeacons() {
+        print("Settings Up Beacons")
+        let uuidString = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+        let beaconUUID = NSUUID(UUIDString: uuidString)!
         
-        func setUpBeacons() {
-            print("Settings Up Beacons")
-            let uuidString = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
-            let beaconUUID = NSUUID(UUIDString: uuidString)!
-            
-            let beaconIdentifier = "IronYard"
-            let allBeaconsRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
-            beaconManager.startMonitoringForRegion(allBeaconsRegion)
-            
-            let firstBeaconMajor :CLBeaconMajorValue = 39380
-            let firstBeaconMinor :CLBeaconMinorValue = 44024
-            let firstBeaconIdentifier = "firstBeacon"
-            let purpleBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: firstBeaconMajor, minor: firstBeaconMinor, identifier: firstBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(purpleBeaconRegion)
-            
-            let secondBeaconMajor :CLBeaconMajorValue = 31640
-            let secondBeaconMinor :CLBeaconMinorValue = 65404
-            let secondBeaconIdentifier = "secondBeacon"
-            let blueBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: secondBeaconMajor, minor: secondBeaconMinor, identifier: secondBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(blueBeaconRegion)
-            
-            let thirdBeaconMajor :CLBeaconMajorValue = 34909
-            let thirdBeaconMinor :CLBeaconMinorValue = 15660
-            let thirdBeaconIdentifier = "thirdBeacon"
-            let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: thirdBeaconMajor, minor: thirdBeaconMinor, identifier: thirdBeaconIdentifier)
-            beaconManager.startRangingBeaconsInRegion(greenBeaconRegion)
-            
-        }
-
-
-
+        let beaconIdentifier = "AllBeacons"
+        let allBeaconsRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
+        beaconManager.startMonitoringForRegion(allBeaconsRegion)
+        
+        let fordBeaconMajor :CLBeaconMajorValue = 39380
+        let fordBeaconMinor :CLBeaconMinorValue = 44024
+        let fordBeaconIdentifier = "purpleBeacon"
+        let purpleBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: fordBeaconMajor, minor: fordBeaconMinor, identifier: fordBeaconIdentifier)
+        beaconManager.startRangingBeaconsInRegion(purpleBeaconRegion)
+        
+        let pepsiBeaconMajor :CLBeaconMajorValue = 31640
+        let pepsiBeaconMinor :CLBeaconMinorValue = 65404
+        let pepsiBeaconIdentifier = "blueBeacon"
+        let blueBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: pepsiBeaconMajor, minor: pepsiBeaconMinor, identifier: pepsiBeaconIdentifier)
+        beaconManager.startRangingBeaconsInRegion(blueBeaconRegion)
+        
+        let ironyardBeaconMajor :CLBeaconMajorValue = 34909
+        let ironyardBeaconMinor :CLBeaconMinorValue = 15660
+        let ironyardBeaconIdentifier = "greenBeacon"
+        let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: ironyardBeaconMajor, minor: ironyardBeaconMinor, identifier: ironyardBeaconIdentifier)
+        beaconManager.startRangingBeaconsInRegion(greenBeaconRegion)
+        
+    }
+    
     func checkForLocationAuthorization() {
         if CLLocationManager.locationServicesEnabled(){
             print("Loc Services On!")
@@ -146,7 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         print("Did Change Authorization")
         checkForLocationAuthorization()
     }
-    
     
 }
 

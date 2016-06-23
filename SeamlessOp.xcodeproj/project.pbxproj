@@ -81,8 +81,8 @@
 				62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */,
 				62588E851D10A2690055A5EB /* OpsTableViewCell.swift */,
 				62C188471D0F16DD009C30D2 /* Main.storyboard */,
-				62C1884A1D0F16DD009C30D2 /* Assets.xcassets */,
 				62C1884C1D0F16DD009C30D2 /* LaunchScreen.storyboard */,
+				62C1884A1D0F16DD009C30D2 /* Assets.xcassets */,
 				62C1884F1D0F16DD009C30D2 /* Info.plist */,
 				62C188571D0F488A009C30D2 /* Model */,
 			);
@@ -151,7 +151,7 @@
 				TargetAttributes = {
 					62C1883F1D0F16DD009C30D2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = MHL7GC47Y6;
+						DevelopmentTeam = QPV64JVM47;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -368,6 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SeamlessOp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Childers.SeamlessOp;
@@ -383,6 +384,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SeamlessOp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Childers.SeamlessOp;

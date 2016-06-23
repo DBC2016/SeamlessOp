@@ -16,6 +16,7 @@ class OpsTableViewCell: UITableViewCell {
     @IBOutlet weak var opsAreaTitleLabel        :UILabel!
     @IBOutlet weak var opsDescripLabel          :UILabel!
     @IBOutlet weak var opsTodaysDateLabel       :UILabel!
+    @IBOutlet weak var opsImageView             :UIImageView!
 
     
 

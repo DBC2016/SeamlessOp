@@ -10,20 +10,9 @@ import UIKit
 
 class Sites: NSObject {
     
-    
-    
-    
-    
-    
     var siteName            :String!
-    var siteArea            :String!
-    var siteDate            :NSDate!
-    var siteDescrip         :String!
-    var siteAuditStatus     :Bool = false
-    var siteImage           :String?
-    var siteBeacon          :String!
-    
-    
-    
+    var areaName            :String!
+    var siteLogo            :String!
+    var beaconIdentifier    :String!
 
 }

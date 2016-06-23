@@ -42,12 +42,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func loginButtonPressed(button: UIButton) {
+//        print("1")
         guard let email = emailEntry.text else {
             return
         }
+//        print("2")
         guard let password = passwordEntry.text else {
             return
         }
+//        print("3")
         
         loginManager.loginUser(email, password: password)
     }
@@ -64,6 +67,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func textFieldChanged() {
+//        print("TFC")
         userRegister.enabled = false
         userLogIn.enabled = false
         
@@ -76,8 +80,11 @@ class ViewController: UIViewController {
         }
         
         if loginManager.isValidLogin(email, password: password) {
+//            print("valid")
             userRegister.enabled = true
             userLogIn.enabled = true
+        } else {
+//            print("invalid")
         }
         
     }
