@@ -14,11 +14,10 @@ class Operations: NSObject {
     var opSiteName          :String!
     var opZone              :String!
     var opDescrip           :String!
-    var siteLogo            :String!
-    var opImage             :String! 
+    var opImage             :String!
     var opUrgency           :Int = 0
     var opNotesPreview      :String?
-    var opNotesPast         :String?
+//    var opNotesPast         :String?
     var opDueDate           :NSDate!
     var opCompleteDate      :NSDate?
     var opAuditor           :Bool = false

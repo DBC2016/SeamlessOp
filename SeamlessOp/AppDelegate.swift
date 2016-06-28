@@ -101,6 +101,30 @@ extension AppDelegate {
         let greenBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon3Major, minor: beacon3Minor, identifier: beacon3Identifier)
         beaconManager.startRangingBeaconsInRegion(greenBeaconRegion)
         
+        let beacon4Major :CLBeaconMajorValue = 36714
+        let beacon4Minor :CLBeaconMinorValue = 8751
+        let beacon4Identifier = "mint2Beacon"
+        let mint2BeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon4Major, minor: beacon4Minor, identifier: beacon4Identifier)
+        beaconManager.startRangingBeaconsInRegion(mint2BeaconRegion)
+        
+        let beacon5Major :CLBeaconMajorValue = 20431
+        let beacon5Minor :CLBeaconMinorValue = 33870
+        let beacon5Identifier = "mint1Beacon"
+        let mint1BeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon5Major, minor: beacon5Minor, identifier: beacon5Identifier)
+        beaconManager.startRangingBeaconsInRegion(mint1BeaconRegion)
+        
+        let beacon6Major :CLBeaconMajorValue = 49845
+        let beacon6Minor :CLBeaconMinorValue = 13037
+        let beacon6Identifier = "ice1Beacon"
+        let ice1BeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon6Major, minor: beacon6Minor, identifier: beacon6Identifier)
+        beaconManager.startRangingBeaconsInRegion(ice1BeaconRegion)
+        
+        let beacon7Major :CLBeaconMajorValue = 36561
+        let beacon7Minor :CLBeaconMinorValue = 52481
+        let beacon7Identifier = "ice2Beacon"
+        let ice2BeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, major: beacon7Major, minor: beacon7Minor, identifier: beacon7Identifier)
+        beaconManager.startRangingBeaconsInRegion(ice2BeaconRegion)
+        
     }
     
     func checkForLocationAuthorization() {

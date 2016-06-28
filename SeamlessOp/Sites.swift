@@ -15,7 +15,7 @@ class Sites: NSObject {
     
     var siteName            :String!
     var areaName            :String!
-//    var siteLogo            :String!
+    var defaultLogo         :String!
     var beaconIdentifier    :String!
 
 }

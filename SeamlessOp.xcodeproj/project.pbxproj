@@ -11,6 +11,8 @@
 		62588E841D10A23A0055A5EB /* OpsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */; };
 		62588E861D10A2690055A5EB /* OpsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62588E851D10A2690055A5EB /* OpsTableViewCell.swift */; };
 		6264288D1D1873BF000F09A0 /* Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6264288C1D1873BF000F09A0 /* Sites.swift */; };
+		628E226D1D1DB2DD0016E5B7 /* AdminOpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E226C1D1DB2DD0016E5B7 /* AdminOpsViewController.swift */; };
+		628E226F1D1DB70A0016E5B7 /* AdminDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E226E1D1DB70A0016E5B7 /* AdminDetailViewController.swift */; };
 		62C188441D0F16DD009C30D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C188431D0F16DD009C30D2 /* AppDelegate.swift */; };
 		62C188461D0F16DD009C30D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C188451D0F16DD009C30D2 /* ViewController.swift */; };
 		62C188491D0F16DD009C30D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C188471D0F16DD009C30D2 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpsDetailViewController.swift; sourceTree = "<group>"; };
 		62588E851D10A2690055A5EB /* OpsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpsTableViewCell.swift; sourceTree = "<group>"; };
 		6264288C1D1873BF000F09A0 /* Sites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sites.swift; sourceTree = "<group>"; };
+		628E226C1D1DB2DD0016E5B7 /* AdminOpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminOpsViewController.swift; sourceTree = "<group>"; };
+		628E226E1D1DB70A0016E5B7 /* AdminDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminDetailViewController.swift; sourceTree = "<group>"; };
 		62C188401D0F16DD009C30D2 /* SeamlessOp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeamlessOp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C188431D0F16DD009C30D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C188451D0F16DD009C30D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				62588E811D10A1160055A5EB /* OpsViewController.swift */,
 				62588E831D10A23A0055A5EB /* OpsDetailViewController.swift */,
 				62588E851D10A2690055A5EB /* OpsTableViewCell.swift */,
+				628E226C1D1DB2DD0016E5B7 /* AdminOpsViewController.swift */,
+				628E226E1D1DB70A0016E5B7 /* AdminDetailViewController.swift */,
 				62C188471D0F16DD009C30D2 /* Main.storyboard */,
 				62C1884C1D0F16DD009C30D2 /* LaunchScreen.storyboard */,
 				62C1884A1D0F16DD009C30D2 /* Assets.xcassets */,
@@ -247,7 +253,9 @@
 				62C188561D0F487F009C30D2 /* Operations.swift in Sources */,
 				62588E861D10A2690055A5EB /* OpsTableViewCell.swift in Sources */,
 				62C1885F1D0F4D8E009C30D2 /* LoginManager.swift in Sources */,
+				628E226F1D1DB70A0016E5B7 /* AdminDetailViewController.swift in Sources */,
 				62588E841D10A23A0055A5EB /* OpsDetailViewController.swift in Sources */,
+				628E226D1D1DB2DD0016E5B7 /* AdminOpsViewController.swift in Sources */,
 				62C188461D0F16DD009C30D2 /* ViewController.swift in Sources */,
 				62C188441D0F16DD009C30D2 /* AppDelegate.swift in Sources */,
 				6264288D1D1873BF000F09A0 /* Sites.swift in Sources */,
