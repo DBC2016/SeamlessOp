@@ -66,7 +66,6 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.opsSiteLabel.text = newOperation.opSiteName
         cell.opsAreaLabel.text = newOperation.opZone
         cell.opsTodaysDateLabel.text = "\(newOperation.opDueDate)"
-//        print("logo \(newOperation.opsLogo)")
         if let logo = newOperation.opsLogo {
             let image = UIImage(named: logo)!
             cell.opsLogoImageView?.image = image
@@ -254,7 +253,7 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tempAddRecords()
+//        tempAddRecords()
         findOperations()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         print("LR1 \(appDelegate.lastRegion?.identifier)")

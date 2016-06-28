@@ -34,12 +34,12 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet private weak var siteImageView            :UIImageView!
     
     
-//    @IBOutlet private weak var detailsScrollView        :UIScrollView!
+    //    @IBOutlet private weak var detailsScrollView        :UIScrollView!
     
-    @IBOutlet private weak var capturedImage            : UIImageView!
-
+    //    @IBOutlet private weak var capturedImage            : UIImageView!
     
-
+    
+    
     
     
     
@@ -47,23 +47,23 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     //Use this code if creating an Admin Component
     
     
-//    @IBAction private func addRecordWithAdmin() {
-//        let newOperation = Operations()
-//        
-//        
-//        newOperation.opSiteName = "Assembly Lines 1-6"
-////        newOperation.opCompleteDate = NSDate(NSDateFormatter: yyyy:MM:dd, MM:HH:SS)
-//        newOperation.ownerID = currentUser.objectId
-//        newOperation.opUrgency = 0
-//        newOperation.opNotesPreview = "Lines 2 and 3 are down, no cleaning needed. Be sure to power was lne 6 and remove oil from control panel."
-//        
-//        
-//    
-//    }
+    //    @IBAction private func addRecordWithAdmin() {
+    //        let newOperation = Operations()
+    //
+    //
+    //        newOperation.opSiteName = "Assembly Lines 1-6"
+    ////        newOperation.opCompleteDate = NSDate(NSDateFormatter: yyyy:MM:dd, MM:HH:SS)
+    //        newOperation.ownerID = currentUser.objectId
+    //        newOperation.opUrgency = 0
+    //        newOperation.opNotesPreview = "Lines 2 and 3 are down, no cleaning needed. Be sure to power was lne 6 and remove oil from control panel."
+    //
+    //
+    //
+    //    }
     
     
-            
-            
+    
+    
     //MARK: - INTERACTIVITY METHODS
     
     @IBAction func saveButtonPressed(button: UIBarButtonItem)  {
@@ -81,6 +81,17 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         operations.opDueDate = dueDatePicker.date
         operations.opCompleteDate = completeDatePicker.date
         operations.opAuditor = opAuditCompleteSwitch.on
+        
+//                if let image = siteImageView.image {
+//                    let filename = getNewImageFilename()
+//                    let imagePath = getDocumentPathForFile(filename)
+//                    UIImagePNGRepresentation(image)?.writeToFile(imagePath, atomically: true)
+//                    operations.opImage = filename
+//        
+//                } else {
+//                    print("No Image to Save")
+//                }
+        
         
         
         saveNewOperation(operations)
@@ -155,7 +166,7 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     //MARK: - BACKENDLESS METHODS
-
+    
     func filterAreaArray() {
         let index = sitesPicker.selectedRowInComponent(0)
         areaArray = sitesArray.filter {$0.siteName == sitesArray[index].siteName}
@@ -181,26 +192,26 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             print("Find Error \(error)")
         }
     }
-
+    
     
     //MARK: - CAMERA METHODS
     
     //saving methods for camera
     
-//    @IBAction private func saveButtonXPressed(button: UIButton) {
-//        if let image = capturedImage.image {
-//            let imagePath = getDocumentPathForFile(getNewImageFilename())
-//            
-//            UIImagePNGRepresentation(image)!.writeToFile(imagePath, atomically: true)
-//        } else {
-//            print("No Image to Save")
-//            
-//        }
-//        
-//        
-//    }
-//    
-//    
+    @IBAction private func saveButtonXPressed(button: UIButton) {
+        if let image = siteImageView.image {
+            let imagePath = getDocumentPathForFile(getNewImageFilename())
+            
+            UIImagePNGRepresentation(image)!.writeToFile(imagePath, atomically: true)
+        } else {
+            print("No Image to Save")
+            
+        }
+        
+        
+    }
+    
+    
     private func getNewImageFilename() -> String {
         return NSProcessInfo.processInfo().globallyUniqueString + ".png"
     }
@@ -211,67 +222,64 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         print("Path:\(docPath)")
         return docPath.stringByAppendingPathComponent(filename)
     }
-
     
     
     
-
+    
+    
     
     //Code to pull photos from Gallery
     
-//    @IBAction private func galleryButtonTapped(button: UIButton) {
-//        print("gallery")
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .SavedPhotosAlbum
-//        presentViewController(imagePicker, animated: true, completion: nil)
-//        
-//    }
+    //    @IBAction private func galleryButtonTapped(button: UIButton) {
+    //        print("gallery")
+    //        let imagePicker = UIImagePickerController()
+    //        imagePicker.delegate = self
+    //        imagePicker.sourceType = .SavedPhotosAlbum
+    //        presentViewController(imagePicker, animated: true, completion: nil)
+    //
+    //    }
+    //
+    //
+    //
+    //    @IBAction private func cameraButtonTapped(button: UIBarButtonItem) {
+    //        print("Camera")
+    //        //Code to bring up Camera App
+    //        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+    //            let imagePicker = UIImagePickerController()
+    //            imagePicker.sourceType = .Camera
+    //            imagePicker.delegate = self
+    //            presentViewController(imagePicker, animated: true, completion: nil)
+    //        } else {
+    //            print("No Camera")
+    //
+    //        }
+    //
+    //    }
+    
+    
+    //    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    //        siteImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
+    //        picker.dismissViewControllerAnimated(true, completion: nil)
+    //    }
+    //
+    //
+    //
+    //    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    //        picker.dismissViewControllerAnimated(true, completion: nil)
+    //
+    //    }
     
     
     
-//    @IBAction private func cameraButtonTapped(button: UIBarButtonItem) {
-//        print("Camera")
-//        //Code to bring up Camera App
-//        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.sourceType = .Camera
-//            imagePicker.delegate = self
-//            presentViewController(imagePicker, animated: true, completion: nil)
-//        } else {
-//            print("No Camera")
-//            
-//        }
-//        
-//    }
     
     
-    // Better Understand difference between these functions and their use
-    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        siteImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    
-//    
-//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//        
-//    }
-    
-            
-        
-
-    
-
     //MARK: - LIFE CYCLE METHODS
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        addRecordWithAdmin()
+        //        addRecordWithAdmin()
         
     }
     
@@ -279,9 +287,10 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewWillAppear(animated)
         
         findSites()
-
+        
         if let operations = newOperation {
-//            siteImageView.image = operations.opImage
+            
+//            siteImageView.image = UIImage(named: getDocumentPathForFile(operations.opImage))
             specialNotesTextView.text = operations.opNotesPreview
             opAuditCompleteSwitch.on = operations.opAuditor
             urgencySegControl.selectedSegmentIndex = operations.opUrgency
@@ -295,17 +304,20 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             urgencySegControl.selectedSegmentIndex = 0
             dueDatePicker.date = NSDate()
             completeDatePicker.date = NSDate()
+//            siteImageView.image = nil 
+            
+
             
         }
         
     }
     
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-
+    
 }

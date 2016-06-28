@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreLocation
+import IQKeyboardManagerSwift
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
@@ -26,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         self.beaconManager.delegate = self
         backendless.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
         checkForLocationAuthorization()
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }
@@ -155,5 +159,7 @@ extension AppDelegate {
     }
     
 }
+
+
 
 
