@@ -143,7 +143,7 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //        let newOperation = Operations()
 //                newOperation.opSiteName = "Ford Motors"
 //                newOperation.opZone = "Zone 6"
-//                newOperation.opDescrip = "Site owner is disappointed with our cleaning of restrooms, pay special attention to the first and 2nd floors and make sure all glass is cleaned."
+//                newOperation.opDescrip = "Site owner is disappointed with our cleaning of restrooms, pay special attention to the first and 2nd floors and make sure all glass is cleaned  around offices spaces. Review Zones 7 & 8 and submit tasks to be complete for management review."
 //                newOperation.opsLogo = "fordLogo"
 //                newOperation.opImage = ""
 //                newOperation.opUrgency = 1
@@ -158,7 +158,7 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
 //        let newOperation2 = Operations()
 //                newOperation2.opSiteName = "FedEx"
-//                newOperation2.opZone = "Zone 5"
+//                newOperation2.opZone = "Zone 1"
 //                newOperation2.opDescrip = "Empty all trash and recycling. Clean all lines and oil spills. audit assembly lines A thru F."
 //                newOperation2.opsLogo = "fedexLogo"
 //                newOperation2.opImage = ""
@@ -174,7 +174,7 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
 //        let newOperation3 = Operations()
 //                newOperation3.opSiteName = "Pepsi"
-//                newOperation3.opZone = "Area 9"
+//                newOperation3.opZone = "Zone 3"
 //                newOperation3.opDescrip = "Paint all doors. Wax floors. Be sure to double check supplies in inventory"
 //                newOperation3.opsLogo = "pepsiLogo"
 //                newOperation3.opImage = ""
@@ -188,26 +188,26 @@ class OpsViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 //        saveOps(newOperation3)
         
         
-        let newOperation4 = Operations()
-                newOperation4.opSiteName = "Amazon"
-                newOperation4.opZone = "Sec 9"
-                newOperation4.opDescrip = "Site looks good but we still have a long way to go. Since this is a new account, consult with facility mangaer to determine needs of client."
-                newOperation4.opsLogo = "amazonLogo"
-                newOperation4.opImage = "amazonImage"
-                newOperation4.opUrgency = 1
-                newOperation4.opNotesPreview = "Wax all bathroom floors and determine other needs."
-                newOperation4.opDueDate = NSDate()
-                newOperation4.opAuditor = false
-                newOperation4.opBeaconID = "ice2Beacon"
-        
-        
-        saveOps(newOperation4)
+//        let newOperation4 = Operations()
+//                newOperation4.opSiteName = "Amazon"
+//                newOperation4.opZone = "Sec 9"
+//                newOperation4.opDescrip = "Site looks good but we still have a long way to go. Since this is a new account, consult with facility mangaer to determine needs of client."
+//                newOperation4.opsLogo = "amazonLogo"
+//                newOperation4.opImage = "amazonImage"
+//                newOperation4.opUrgency = 1
+//                newOperation4.opNotesPreview = "Wax all bathroom floors and determine other needs."
+//                newOperation4.opDueDate = NSDate()
+//                newOperation4.opAuditor = false
+//                newOperation4.opBeaconID = "ice2Beacon"
+//        
+//        
+//        saveOps(newOperation4)
         
         
 //        let newOperation5 = Operations()
-//                newOperation5.opSiteName = "Iron Yard"
-//                newOperation5.opZone = "First Floor"
-//                newOperation5.opDescrip = "Empty trash cans, vacuum floors, complete dry wall in all classrooms."
+//                newOperation5.opSiteName = "The Iron Yard"
+//                newOperation5.opZone = "Fourth Floor"
+//                newOperation5.opDescrip = "Empty trash cans, vacuum floors, and complete dry wall in all classrooms. Update Jordan about status of painting. Remember to get projector screens installed for Demo Day."
 //                newOperation5.opsLogo = "ironyardLogo"
 //                newOperation5.opImage = ""
 //                newOperation5.opUrgency = 4

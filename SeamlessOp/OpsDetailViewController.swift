@@ -9,7 +9,8 @@
 import UIKit
 import AVFoundation
 
-class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+    
     
     
     
@@ -34,7 +35,13 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet private weak var siteImageView            :UIImageView!
     
     
-    //    @IBOutlet private weak var detailsScrollView        :UIScrollView!
+    
+    
+    var firstX = 0 as CGFloat
+    var firstY = 0 as CGFloat
+    var lastScale :CGFloat!
+    var lastRotation = 0 as CGFloat
+    
     
     //    @IBOutlet private weak var capturedImage            : UIImageView!
     
@@ -81,16 +88,17 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         operations.opDueDate = dueDatePicker.date
         operations.opCompleteDate = completeDatePicker.date
         operations.opAuditor = opAuditCompleteSwitch.on
+        operations
         
-//                if let image = siteImageView.image {
-//                    let filename = getNewImageFilename()
-//                    let imagePath = getDocumentPathForFile(filename)
-//                    UIImagePNGRepresentation(image)?.writeToFile(imagePath, atomically: true)
-//                    operations.opImage = filename
-//        
-//                } else {
-//                    print("No Image to Save")
-//                }
+        //                if let image = siteImageView.image {
+        //                    let filename = getNewImageFilename()
+        //                    let imagePath = getDocumentPathForFile(filename)
+        //                    UIImagePNGRepresentation(image)?.writeToFile(imagePath, atomically: true)
+        //                    operations.opImage = filename
+        //
+        //                } else {
+        //                    print("No Image to Save")
+        //                }
         
         
         
@@ -135,6 +143,9 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     //MARK: - PICKERVIEW METHODS
+    
+    
+    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -227,49 +238,47 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     
     
+    //MARK: - GESTURE METHODS
     
-    //Code to pull photos from Gallery
+    @IBAction func imagePanned(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translationInView(self.view)
+        if let view = gesture.view {
+            view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
+        }
+        gesture.setTranslation(CGPointZero, inView: self.view)
+    }
     
-    //    @IBAction private func galleryButtonTapped(button: UIButton) {
-    //        print("gallery")
-    //        let imagePicker = UIImagePickerController()
-    //        imagePicker.delegate = self
-    //        imagePicker.sourceType = .SavedPhotosAlbum
-    //        presentViewController(imagePicker, animated: true, completion: nil)
-    //
-    //    }
-    //
-    //
-    //
-    //    @IBAction private func cameraButtonTapped(button: UIBarButtonItem) {
-    //        print("Camera")
-    //        //Code to bring up Camera App
-    //        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-    //            let imagePicker = UIImagePickerController()
-    //            imagePicker.sourceType = .Camera
-    //            imagePicker.delegate = self
-    //            presentViewController(imagePicker, animated: true, completion: nil)
-    //        } else {
-    //            print("No Camera")
-    //
-    //        }
-    //
-    //    }
+    @IBAction func imagePinched(gesture: UIPinchGestureRecognizer) {
+        if (gesture.state == .Began) {
+            lastScale = 1.0
+        }
+        let scale = 1.0 - (lastScale - gesture.scale)
+        let currentTransform = siteImageView.transform
+        let newTransform = CGAffineTransformScale(currentTransform, scale, scale)
+        siteImageView.transform = newTransform
+        lastScale = gesture.scale
+    }
     
+    @IBAction func imageRotated(gesture: UIRotationGestureRecognizer) {
+        if (gesture.state == .Ended) {
+            lastRotation = 0.0
+            return
+        }
+        print("rotate 2")
+        let rotation = 0.0 - (lastRotation - gesture.rotation)
+        print("rotate 3")
+        let currentTransform = siteImageView.transform
+        print("rotate 4")
+        let newTransform = CGAffineTransformRotate(currentTransform, rotation)
+        print("rotate 5")
+        siteImageView.transform = newTransform
+        
+        lastRotation = gesture.rotation
+    }
     
-    //    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-    //        siteImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
-    //        picker.dismissViewControllerAnimated(true, completion: nil)
-    //    }
-    //
-    //
-    //
-    //    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-    //        picker.dismissViewControllerAnimated(true, completion: nil)
-    //
-    //    }
-    
-    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
     
     
     
@@ -290,7 +299,7 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         if let operations = newOperation {
             
-//            siteImageView.image = UIImage(named: getDocumentPathForFile(operations.opImage))
+            //        siteImageView.image = UIImage(named: getDocumentPathForFile(operations.opImage))
             specialNotesTextView.text = operations.opNotesPreview
             opAuditCompleteSwitch.on = operations.opAuditor
             urgencySegControl.selectedSegmentIndex = operations.opUrgency
@@ -304,9 +313,9 @@ class OpsDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             urgencySegControl.selectedSegmentIndex = 0
             dueDatePicker.date = NSDate()
             completeDatePicker.date = NSDate()
-//            siteImageView.image = nil 
+            //            siteImageView.image = nil
             
-
+            
             
         }
         
